@@ -2,28 +2,60 @@
 
 cp -f /LocalSettings.php /var/www/html/LocalSettings.php
 
-if [ ! -z "$WIKI_MYSQL_TYPE" ]; then
-    sed -i "s/\$wgDBtype = \"{{WIKI_MYSQL_TYPE}}\"/\$wgDBtype = \"${WIKI_MYSQL_TYPE}\"/g" /var/www/html/LocalSettings.php
-fi
 
-if [ ! -z "$WIKI_MYSQL_HOST" ]; then
-    sed -i "s/\$wgDBserver = \"{{WIKI_MYSQL_HOST}}\"/\$wgDBserver = \"${WIKI_MYSQL_HOST}\"/g" /var/www/html/LocalSettings.php
-fi
-
-if [ ! -z "$WIKI_MYSQL_DATABASE" ]; then
-    sed -i "s/\$wgDBname = \"{{WIKI_MYSQL_DATABASE}}\"/\$wgDBname = \"${WIKI_MYSQL_DATABASE}\"/g" /var/www/html/LocalSettings.php
-fi
-
-if [ ! -z "$WIKI_MYSQL_USER" ]; then
-    sed -i "s/\$wgDBuser = \"{{WIKI_MYSQL_USER}}\"/\$wgDBuser = \"${WIKI_MYSQL_USER}\"/g" /var/www/html/LocalSettings.php
-fi
-
-if [ ! -z "$WIKI_MYSQL_PASSWORD" ]; then
-    sed -i "s/\$wgDBpassword = \"{{WIKI_MYSQL_PASSWORD}}\"/\$wgDBpassword = \"${WIKI_MYSQL_PASSWORD}\"/g" /var/www/html/LocalSettings.php
-fi
-
+# BDD
 if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
-    sed -i "s/\$wgDBprefix = \"{{WIKI_MYSQL_PREFIX}}\"/\$wgDBprefix = \"${WIKI_MYSQL_PREFIX}\"/g" /var/www/html/LocalSettings.php
+    sed -i "s/{{WIKI_MYSQL_TYPE}}/mysql/g" /var/www/html/LocalSettings.php
+fi
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{WIKI_MYSQL_HOST}}/mysql/g" /var/www/html/LocalSettings.php
+fi
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{WIKI_MYSQL_DATABASE}}/${DB_WIKI_NAME}/g" /var/www/html/LocalSettings.php
+fi
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{WIKI_MYSQL_USER}}/root/g" /var/www/html/LocalSettings.php
+fi
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{WIKI_MYSQL_PASSWORD}}/${DB_WIKI_PASSWORD}/g" /var/www/html/LocalSettings.php
+fi
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{WIKI_MYSQL_PREFIX}}/${DB_WIKI_PREFIX}/g" /var/www/html/LocalSettings.php
+fi
+
+# SMTP
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{SMTP_HOST}}/${DB_WIKI_PREFIX}/g" /var/www/html/LocalSettings.php
+fi
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{SMTP_ID_HOST}}/${DB_WIKI_PREFIX}/g" /var/www/html/LocalSettings.php
+fi
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{SMTP_PORT}}/${DB_WIKI_PREFIX}/g" /var/www/html/LocalSettings.php
+fi
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{SMTP_USERNAME}}/${DB_WIKI_PREFIX}/g" /var/www/html/LocalSettings.php
+fi
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{SMTP_PASSWORD}}/${DB_WIKI_PREFIX}/g" /var/www/html/LocalSettings.php
+fi
+
+# Secret
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{WIKI_SECRET_KEY}}/${WIKI_SECRET_KEY}/g" /var/www/html/LocalSettings.php
+fi
+
+# WIKI infos
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{WIKI_LANG}}/${WIKI_LANG}/g" /var/www/html/LocalSettings.php
+fi
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{WIKI_SITENAME}}/${WIKI_SITENAME}/g" /var/www/html/LocalSettings.php
+fi
+
+# URL
+if [ ! -z "$WIKI_MYSQL_PREFIX" ]; then
+    sed -i "s/{{WIKI_URL}}/http:\/\/wiki.${HOSTNAME_NEFALD}/g" /var/www/html/LocalSettings.php
 fi
 
 /usr/local/bin/apache2-foreground
