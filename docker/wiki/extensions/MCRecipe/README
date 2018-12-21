@@ -1,0 +1,86 @@
+MCRecipe
+
+Version 1.0
+
+An extension facilitates minecraft recipe rendering for minecraft modders
+building their wiki.
+
+===Installation===
+
+Put "MCRecipe" into "/extension" folder, and add these codes into
+"LocalSettings.php" to enable MCRecipe:
+
+<code>
+require_once "$IP/extensions/MCRecipe/MCRecipe.php";
+</code>
+
+===Usage===
+
+MCRecipe now provides three types of craft recipes: shaped recipes, shapeless
+recipes, and smelting recipes. They can be insert into wiki by this format:
+
+{{#recipe:
+<recipe type>|
+<item database>|
+<recipe input>|
+<recipe output>
+}}
+
+Recipe type can be: "craft", "craft shapeless", or "smelt".
+
+Item database consists a list of item definitions. Each item information is
+surrounded by a pair of parentheses, and there is no padding between items.
+Here is an example of a item database defination:
+
+(Iron_Ingot)(Gold_Ingot,Gold Ingot,GoldIngot.png)(Coal,Charcoal,Charcoal.png)
+
+An item in the database has this format:
+
+(<item link>[,<item name>[,<item image>]])
+
+Also, you could add external link or image using square brackets, here's an
+example:
+
+([http://minecraft.gamepedia.com/Iron_Ingot],Iron Ingot,[http://somehost/somepath/IronIngot.png])
+
+Note that there's no space after the comma.
+
+Recipe input is a list of input item of a recipe. For crafting recipe, there's
+9 inputs separated by "|". Each input is a index to the item database. An input
+can also be a array of indexes, which makes an animated crafting slot.
+
+Recipe output shares the same format as each recipe input.
+
+Here's some input/output examples:
+
+-1			# Empty slot
+0			# Load first item of the database
+[0,1]		# Repeatly show first and second items of the database
+[-1,0]
+{index:0,number:8}		# 8x the first item
+{index:0,number:0.5}	# First item with half damaged
+[{index:0,number:3},0]
+
+Here's some full examples of a crafting recipe:
+
+{{#recipe:craft
+|(Iron_Ingot)(Stick)(Iron_Sword)
+|-1| 0|-1
+|-1| 0|-1
+|-1| 1|-1
+|2
+}}
+
+{{#recipe:craft
+|(Oak_Planks)(Brich_Planks)(Stick)
+|-1|-1|-1
+|-1|[0,1]|-1
+|-1|[0,1]|-1
+|{index:2,number:4}
+}}
+
+===Author===
+Herbix
+
+===LICENSE===
+GPL2

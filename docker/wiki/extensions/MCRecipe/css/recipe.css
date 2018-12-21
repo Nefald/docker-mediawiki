@@ -1,0 +1,20 @@
+@font-face{font-family:Minecraft;src:url("../font/minecraft.eot"),url("../font/minecraft.woff") format('woff'),url("../font/minecraft.ttf") format('truetype')}
+
+.recipe {padding:0; position:relative;}
+.recipe img {image-rendering:pixelated;border:none;}
+
+.number {position:absolute;right:-2px;bottom:-2px;pointer-events:none;color:white;font-size:16px;font-weight:normal;line-height:16px;text-shadow: 2px 2px 0 #3F3F3F;font-family:Minecraft;}
+.progress {position:absolute;left:4px;top:26px;height:4px;width:26px;background:#FFF url(../image/progress.png);}
+.progress-in {position:absolute;left:0;top:0;height:2px;}
+.recipe-popup {border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;padding:2px;position:absolute;background:#100010;}
+.recipe-popup-inner {font-family:Minecraft;text-shadow:2px 2px 0 #3F3F3F;color:white;font-size:16px;font-weight:normal;line-height:16px;padding:6px;filter:alpha(opacity=94);-moz-opacity:0.9375;-khtml-opacity:0.9375;opacity:0.9375;border:2px solid #24005A;padding-bottom:5px;}
+
+.craft {width:260px; height:136px; background: #AAA url(../image/craft.png);}
+.shapeless {background: #AAA url(../image/craft_shapeless.png);}
+.smelt {width:260px; height:136px; background: #AAA url(../image/smelt.png);}
+.excraft {width:308px; height:136px; background: #AAA url(../image/excraft.png);}
+.fudrawing {width:350px; height:172px; background: #AAA url(../image/fudrawing.png);}
+.fudrawing .box {position:absolute; height:14px; width:14px;}
+.fudrawing .box.red {background:red;}
+.fudrawing .box.yellow {background:yellow;}
+.fudrawing .need-count {position:absolute;left:66px;top:138px;font-family:Minecraft;font-size:16px;font-weight:normal;line-height:16px;text-shadow:2px 2px 0 #3F3F3F;color:white;}

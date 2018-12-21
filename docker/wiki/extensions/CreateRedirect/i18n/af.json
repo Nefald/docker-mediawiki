@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Naudefj",
+			"Fwolff"
+		]
+	},
+	"createredirect": "Skep Aanstuur",
+	"createredirect-instructions": "Met die vorm hieronder kan u 'n aanstuurblad skep of 'n bestaande bladsy vervang met 'n aanstuurblad.",
+	"createredirect-page-title": "Bladsynaam:",
+	"createredirect-redirect-done": "Aanstuur vanaf \"$1\" na \"$2\" geskep",
+	"createredirect-redirect-to": "Stuur aan na:",
+	"createredirect-save": "Stoor bladsy"
+}
